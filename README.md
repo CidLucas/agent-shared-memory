@@ -1,8 +1,6 @@
 # 🧠 Memória Incremental para Agentes de IA — Shared Memory com MCP
 
-> **Código original de produção** extraído da **Blu Platform** — um sistema multiagente real rodando em produção.  
-> Nada de demos acadêmicas, provas de conceito ou brinquedos de tutorial.  
-> Isso é o `shared_business_memory` que conecta dezenas de agentes de IA especializados em um ecossistema coerente.
+> **Código** extraído da **Blu Platform** — um sistema multiagente real rodando em produção.  
 
 ---
 
@@ -11,19 +9,19 @@
 - **O que é:** Sistema de memória compartilhada e incremental para múltiplos agentes de IA. Agentes escrevem fatos, decisões, descobertas e snapshots em um banco central e leem o contexto uns dos outros — sem precisar de conversas diretas.
 - **Arquitetura:** MCP Server (Model Context Protocol) + SQLite (via adapters que substituem o Supabase original).
 - **Tamanho real:** `memory_module.py` com **3.467 linhas**, 13 tools MCP, pre/post-flight hooks, backup e prune automáticos.
-- **Para quem é:** Tech leads, arquitetos de IA, engenheiros de ML e founders que estão construindo sistemas multiagente sérios e precisam de um design de memória battle-tested.
+- **Para quem é:** Curiosos, recrutadores e quem queira experimentar um pouco mais dos conceitos de IA.
 - **Licença:** MIT — use, estude, adapte, critique.
 
 ---
 
 ## 🎯 O que este repositório contém
 
-Este é **código original de produção** extraído do monorepo da **Blu Platform**, uma plataforma multiagente B2B que atende centenas de empresas. Diferente de repositórios acadêmicos que implementam "memória para agentes" com 200 linhas e um vetor mockado, este código:
+Este **código** extraído do monorepo da **Blu Platform**, uma plataforma multiagente B2B para empresas. 
 
 - ✅ **Esteve em produção** — cada linha foi escrita para resolver problemas reais de escalabilidade, concorrência e isolamento de tenants.
 - ✅ **Tem 3.467 linhas só no módulo de memória** — validação de entidades, controle de permissão de escrita (Single Writer principle), TTL tiers, snapshots com frontmatter, grafos semânticos, soft-delete, export.
 - ✅ **É framework-agnostic** — usa o protocolo MCP padrão, não um framework proprietário.
-- ✅ **Funciona offline** — graças aos adapters SQLite que substituem o Supabase sem modificar uma linha do código original.
+- ✅ **Funciona offline** — graças aos adapters SQLite que substituem o Supabase sem modificar código original.
 
 ### Estrutura de diretórios
 
@@ -169,7 +167,7 @@ O servidor inicia em `http://0.0.0.0:8000` e expõe as tools MCP via transporte 
 
 ## 🔧 Adapters — Por que existem
 
-O código original da Blu Platform depende do Supabase (banco PostgreSQL gerenciado, autenticação, storage). Para tornar o repositório executável localmente **sem modificar uma linha do código original**, criamos **adapters** que implementam a mesma interface do Supabase usando SQLite puro.
+O código original depende do Supabase (banco PostgreSQL gerenciado, autenticação, storage). Para tornar o repositório executável localmente **sem modificar uma linha do código original**, criamos **adapters** que implementam a mesma interface do Supabase usando SQLite puro.
 
 ```
 Código original (memory_module.py)
